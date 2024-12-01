@@ -1,0 +1,16 @@
+{
+  "name": "aoc_2024",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "^1.1.14"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "test": "vitest"
+  },
+  "dependencies": {
+    "prettier": "^3.4.1"
+  }
+}
