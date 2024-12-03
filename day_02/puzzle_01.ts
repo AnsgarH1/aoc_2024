@@ -14,6 +14,7 @@ export const puzzle_01 = async(): Promise<number> => {
         let previouseLevel = 0;
         
         let reportIsSafe = true;
+        
         report.forEach((currLevel, levelIndex)=>{
             if(levelIndex === 0){
                 previouseLevel = currLevel;
