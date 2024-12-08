@@ -4,9 +4,9 @@ import {
   check_diagonal_tr_bl,
   check_horizontal,
   check_vertical,
-  type Quadrant,
-} from "./puzzle_01";
+} from "./matchUtils"
 
+import type { Quadrant } from "./puzzle_01";
 describe("Check Horizontal", () => {
   it("should count all horizontal occurrences of XMAS or SAMX", () => {
     const quadrant: Quadrant = [
@@ -45,24 +45,35 @@ describe("Check Horizontal", () => {
 describe("Check Vertical", () => {
   it("should count all vertical occurrences of XMAS or SAMX when isLastLine is true", () => {
     const quadrant: Quadrant = [
-      ["X", "_", "_", "_"],
-      ["M", "_", "_", "_"],
-      ["A", "_", "_", "_"],
-      ["S", "_", "_", "_"],
+      ["X", "_", "S", "_"],
+      ["M", "_", "A", "_"],
+      ["A", "_", "M", "_"],
+      ["S", "_", "X", "_"],
     ];
 
-    expect(check_vertical(quadrant, true)).toBe(1); // One vertical match
+    expect(check_vertical(quadrant, true)).toBe(2); // One vertical match
   });
 
-  it("should detect diagonal matches when isLastLine is false", () => {
+  it("should detect vertical matches when isLastLine is false", () => {
     const quadrant: Quadrant = [
       ["X", "_", "_", "_"],
-      ["_", "M", "_", "_"],
-      ["_", "_", "A", "_"],
-      ["_", "_", "_", "S"],
+      ["M", "M", "_", "_"],
+      ["A", "_", "A", "_"],
+      ["S", "_", "_", "S"],
     ];
 
     expect(check_vertical(quadrant, false)).toBe(1); // Diagonal match
+  });
+
+  it("should detect vertical matches when isLastLine is true", () => {
+    const quadrant: Quadrant = [
+      ["X", "_", "_", "S"],
+      ["M", "M", "_", "A"],
+      ["A", "_", "A", "M"],
+      ["S", "_", "_", "X"],
+    ];
+
+    expect(check_vertical(quadrant, true)).toBe(2); // Diagonal match
   });
 
   it("should return 0 if no match is found", () => {
