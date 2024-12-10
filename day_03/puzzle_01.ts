@@ -1,5 +1,5 @@
 export const puzzle_01 = async (input: string): Promise<number> => {
-  const results = input.matchAll(/mul\((\d+),(\d+)\)/g);
+  const results = input.matchAll(/do\(\).*mul\((\d+),(\d+)\).*don't\(\)/g);
 
   const pairs = results.map((item) => {
     const num1 = item[1];
@@ -11,7 +11,8 @@ export const puzzle_01 = async (input: string): Promise<number> => {
   console.log("SUM:", sum);
   return sum;
 };
-
+/*
 const input = await Bun.file("day_03/data.txt").text();
 
 console.log(await puzzle_01(input));
+*/
